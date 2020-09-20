@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://textures/Creatures_text/Citizen/Citizen2PrototipeV1.png" type="Texture" id=1]
+
+[node name="Citizen2" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 5, 5 )
+texture = ExtResource( 1 )

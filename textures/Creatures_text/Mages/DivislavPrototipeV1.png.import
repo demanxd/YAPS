@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/DivislavPrototipeV1.png-43d37f60a38efd45ab8a5d47e1612f2e.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://textures/Creatures_text/Mages/DivislavPrototipeV1.png"
+dest_files=[ "res://.import/DivislavPrototipeV1.png-43d37f60a38efd45ab8a5d47e1612f2e.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
