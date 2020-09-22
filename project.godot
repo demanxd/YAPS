@@ -8,9 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "DialogueBox",
+"language": "GDScript",
+"path": "res://aux_gds/DialogueBox.gd"
+}, {
+"base": "Node",
+"class": "DialoguePlayer",
+"language": "GDScript",
+"path": "res://aux_gds/DialoguePlayer.gd"
+}, {
+"base": "Node",
+"class": "Dialogue_Action",
+"language": "GDScript",
+"path": "res://DialogueAction.gd"
+} ]
 _global_script_class_icons={
-
+"DialogueBox": "",
+"DialoguePlayer": "",
+"Dialogue_Action": ""
 }
 
 [application]
