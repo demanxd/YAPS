@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "Dialoge_Action",
+"language": "GDScript",
+"path": "res://Locations/ActionDialoge.gd"
+}, {
+"base": "Node",
 "class": "DialogueBox",
 "language": "GDScript",
 "path": "res://aux_gds/DialogueBox.gd"
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://DialogueAction.gd"
 } ]
 _global_script_class_icons={
+"Dialoge_Action": "",
 "DialogueBox": "",
 "DialoguePlayer": "",
 "Dialogue_Action": ""

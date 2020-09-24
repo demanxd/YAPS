@@ -1,12 +1,6 @@
 extends Node
-#http://gameprogrammingpatterns.com/observer.html
-#https://godotengine.org/qa/8291/how-to-parse-a-json-file-i-wrote-myself
 
-# Wait 5 seconds, then resume execution.
-#yield(get_tree().create_timer(5.0), "timeout")
-
-
-class_name Dialogue_Action
+class_name Dialoge_Action
 
 export (String, FILE, "*.json") var dialogue_file_path : String
 

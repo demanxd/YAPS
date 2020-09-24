@@ -4,9 +4,9 @@ class_name DialogueBox
 
 signal dialogue_ended()
 
-onready var dialogue_label : = get node("DialoguePlayer")
+onready var dialogue_label : = get_node("DialoguePlayer")
 
-onready var name_label : = get_node("Panel/Colums/Name") ass Label
+onready var name_label : = get_node("Panel/Colums/Name") as Label
 onready var text_label : = get_node("Panel/Colums/Text") as Label
 
 onready var button_next := get_node("Panel/Colums/ButtonNext") as Button
@@ -39,7 +39,6 @@ func _on_ButtonFinished_pressed() -> void:
 	emit_signal("dialogue_ended")
 	hide()
 
-func update_content() -> void:
 func update_content() -> void:
 	var dialogue_player_name = dialogue_player.title
 	name_label.text = dialogue_player_name
