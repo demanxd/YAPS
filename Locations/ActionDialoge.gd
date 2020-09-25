@@ -2,11 +2,17 @@ extends Node
 
 class_name Dialoge_Action
 
+onready var Map = ".."
+
+
+const SOURCE_DIRECTORY = "res://dialogues/Tavern"
+var DIAL_FILE = "Tavern.json"
+
 export (String, FILE, "*.json") var dialogue_file_path : String
 
 func interact() -> void:
-	var dialogue : Dictionary = load_dialogue(dialogue_file_path)
-	#yield(local_map.play_dialogue(dialogue), "complited")
+	var dialogue : Dictionary = load_dialogue(SOURCE_DIRECTORY.plus_file(DIAL_FILE))
+	yield(Map.play_dialogue(dialogue), "complited")
 	emit_signal("finished")
 
 
@@ -24,3 +30,5 @@ func load_dialogue(file_path) -> Dictionary:
 	#assert 
 	dialogue.size() > 0
 	return dialogue
+
+

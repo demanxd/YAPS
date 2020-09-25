@@ -1,6 +1,8 @@
 extends Node
 #http://gameprogrammingpatterns.com/observer.html
 #https://godotengine.org/qa/8291/how-to-parse-a-json-file-i-wrote-myself
+#https://habr.com/ru/post/212837/
+#https://generalistprogrammer.com/godot/godot-2d-platformer-tutorial/
 
 # Wait 5 seconds, then resume execution.
 #yield(get_tree().create_timer(5.0), "timeout")

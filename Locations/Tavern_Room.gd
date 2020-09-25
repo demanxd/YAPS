@@ -6,10 +6,33 @@ onready var TIMER_SET_ONCE = false
 
 onready var Timer = $Timer
 onready var MCF1  = $YSort/MCFriend1
+onready var MCF2  = $YSort/MCFriend2
+onready var DialReader = $ActionDialoge
+#export var e = 2
 
 
 func _ready():
+	DialReader.interact()
 	pass
+
+
+
+func play_dialogue(dial_dict):
+	
+	pass
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #timerblock================
