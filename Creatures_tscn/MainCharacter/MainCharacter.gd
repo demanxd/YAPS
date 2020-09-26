@@ -6,11 +6,9 @@ const FLOOR_DETECT_DISTANCE = 20.0
 
 export(String) var action_suffix = ""
 
-onready var platform_detector = $PlatformDetector
-onready var animation_player = $AnimationPlayer
-onready var shoot_timer = $ShootAnimation
+#onready var platform_detector = $PlatformDetector
+#onready var animation_player = $AnimationPlayer
 onready var sprite = $Sprite
-onready var gun = sprite.get_node(@"Gun")
 
 
 func _ready():
@@ -49,10 +47,10 @@ func _physics_process(_delta):
 	_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
 
 	var snap_vector = Vector2.DOWN * FLOOR_DETECT_DISTANCE if direction.y == 0.0 else Vector2.ZERO
-	var is_on_platform = platform_detector.is_colliding()
-	_velocity = move_and_slide_with_snap(
-		_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
-	)
+#	var is_on_platform = platform_detector.is_colliding()
+#	_velocity = move_and_slide_with_snap(
+#		_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
+#	)
 
 	# When the character’s direction changes, we want to to scale the Sprite accordingly to flip it.
 	# This will make Robi face left or right depending on the direction you move.
@@ -63,21 +61,20 @@ func _physics_process(_delta):
 	# bullets forward.
 	# There are many situations like these where you can reuse existing properties instead of
 	# creating new variables.
-	var is_shooting = false
-	if Input.is_action_just_pressed("shoot" + action_suffix):
-		is_shooting = gun.shoot(sprite.scale.x)
 
-	var animation = get_new_animation(is_shooting)
-	if animation != animation_player.current_animation and shoot_timer.is_stopped():
-		if is_shooting:
-			shoot_timer.start()
-		animation_player.play(animation)
+#	if animation != animation_player.current_animation and shoot_timer.is_stopped():
+#		animation_player.play(animation)
 
 
 func get_direction():
 	return Vector2(
-		Input.get_action_strength("move_right" + action_suffix) - Input.get_action_strength("move_left" + action_suffix),
-		-1 if is_on_floor() and Input.is_action_just_pressed("jump" + action_suffix) else 0
+		Input.get_action_strength("move_right" + action_suffix) 
+			- Input.get_action_strength("move_left" + action_suffix),
+			-1 
+#			if is_on_floor() and Input.is_action_just_pressed("jump" + action_suffix) 
+#			else 0
+			if Input.is_action_just_pressed("jump" + action_suffix) 
+			else 0
 	)
 
 
