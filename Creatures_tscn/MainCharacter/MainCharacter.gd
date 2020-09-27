@@ -6,7 +6,7 @@ const FLOOR_DETECT_DISTANCE = 20.0
 
 export(String) var action_suffix = ""
 
-#onready var platform_detector = $PlatformDetector
+onready var platform_detector = $PlatformDetector
 #onready var animation_player = $AnimationPlayer
 onready var sprite = $Sprite
 
@@ -47,17 +47,13 @@ func _physics_process(_delta):
 	_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
 
 	var snap_vector = Vector2.DOWN * FLOOR_DETECT_DISTANCE if direction.y == 0.0 else Vector2.ZERO
-#	var is_on_platform = platform_detector.is_colliding()
-#	_velocity = move_and_slide_with_snap(
-#		_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
-#	)
-
-	# When the character’s direction changes, we want to to scale the Sprite accordingly to flip it.
-	# This will make Robi face left or right depending on the direction you move.
-	if direction.x != 0:
-#		sprite.scale.x = 1 if direction.x > 0 else -1
-#	var motion = velocity*delta
-		move_and_collide(direction)
+	var is_on_platform = platform_detector.is_colliding()
+	_velocity = move_and_slide_with_snap(
+		_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
+	)
+#
+#	if direction.x != 0:
+#		move_and_collide(direction)
 
 	# We use the sprite's scale to store Robi’s look direction which allows us to shoot
 	# bullets forward.

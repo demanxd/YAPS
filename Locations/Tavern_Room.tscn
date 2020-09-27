@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://textures/tmp_text/wall.png" type="Texture" id=1]
-[ext_resource path="res://textures/tmp_text/floor.png" type="Texture" id=2]
+[ext_resource path="res://Locations/Floor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Creatures_tscn/Barmen/BarmenPrototipeV1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Creatures_tscn/MainCharacter/MainCharacter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Creatures_tscn/MCFriends/MCFriend1.tscn" type="PackedScene" id=5]
@@ -20,18 +20,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 1552, 848 )
 
-[node name="Floor" type="Sprite" parent="."]
-position = Vector2( 0.177612, 493.579 )
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 2 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 7760, 2752 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor"]
-position = Vector2( 0, -1500 )
-scale = Vector2( 5, 5 )
-polygon = PoolVector2Array( -0.0819206, 300.003, 1552.02, 299.846, 1551.73, 723.655, 0.745766, 724.166 )
+[node name="Floor" parent="." instance=ExtResource( 2 )]
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -39,7 +28,7 @@ polygon = PoolVector2Array( -0.0819206, 300.003, 1552.02, 299.846, 1551.73, 723.
 position = Vector2( 104.662, 447.916 )
 
 [node name="MainCharacter" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 386.798, 450.038 )
+position = Vector2( 386.798, 444.847 )
 
 [node name="MCFriend1" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 317.389, 450.375 )
