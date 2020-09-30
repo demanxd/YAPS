@@ -3,6 +3,9 @@ extends Actor
 
 
 const FLOOR_DETECT_DISTANCE = 20.0
+export var MAX_JUMP_DISTANCE = 0
+var JUMP_DISTANCE = 0 #jump upper position
+var IN_AIR = false
 
 export(String) var action_suffix = ""
 
@@ -13,13 +16,7 @@ onready var sprite = $Sprite
 
 func _ready():
 	# Static types are necessary here to avoid warnings.
-	var camera: Camera2D = $Camera
-	if action_suffix == "_p1":
-		camera.custom_viewport = $"../.."
-	elif action_suffix == "_p2":
-		var viewport: Viewport = $"../../../../ViewportContainer2/Viewport"
-		viewport.world_2d = ($"../.." as Viewport).world_2d
-		camera.custom_viewport = viewport
+	pass
 
 
 # Physics process is a built-in loop in Godot.
@@ -42,12 +39,25 @@ func _ready():
 #   you can easily move individual functions.
 func _physics_process(_delta):
 	var direction = get_direction()
-
 	var is_jump_interrupted = Input.is_action_just_released("jump" + action_suffix) and _velocity.y < 0.0
-	_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
-
+	if is_jump_interrupted and IN_AIR == false:
+		IN_AIR = true
+		JUMP_DISTANCE = position.y + MAX_JUMP_DISTANCE
+#	if (jumping):
+#		if (lv.y>0):
+##Завершаем прыжок если он закончен (достигли наивысшей точки прыжка)
+#			jumping=false
+#		elif (not jump):
+#			stopping_jump=true
+#
+#		if (stopping_jump):
+#			lv.y+=STOP_JUMP_FORCE*step
+	
+	_velocity = calculate_move_velocity(_velocity, direction, speed)
 	var snap_vector = Vector2.DOWN * FLOOR_DETECT_DISTANCE if direction.y == 0.0 else Vector2.ZERO
 	var is_on_platform = platform_detector.is_colliding()
+	print("is on platform = ", is_on_platform)
+	print("_velocity = ", _velocity.x, "    ", _velocity.y)
 	_velocity = move_and_slide_with_snap(
 		_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
 	)
@@ -65,13 +75,12 @@ func _physics_process(_delta):
 
 
 func get_direction():
+	print("is on the floor ", is_on_floor())
 	return Vector2(
 		Input.get_action_strength("move_right" + action_suffix) 
 			- Input.get_action_strength("move_left" + action_suffix),
-			-1 
-#			if is_on_floor() and Input.is_action_just_pressed("jump" + action_suffix) 
-#			else 0
-			if Input.is_action_just_pressed("jump" + action_suffix) 
+			-1
+			if is_on_floor() and Input.is_action_just_pressed("jump" + action_suffix) 
 			else 0
 	)
 
@@ -81,17 +90,20 @@ func get_direction():
 func calculate_move_velocity(
 		linear_velocity,
 		direction,
-		speed,
-		is_jump_interrupted
+		speed
 	):
 	var velocity = linear_velocity
 	velocity.x = speed.x * direction.x
 	if direction.y != 0.0:
 		velocity.y = speed.y * direction.y
-	if is_jump_interrupted:
-		# Decrease the Y velocity by multiplying it, but don't set it to 0
-		# as to not be too abrupt.
-		velocity.y *= 0.6
+	if IN_AIR:
+		if JUMP_DISTANCE < position.y:
+			# Decrease the Y velocity by multiplying it, but don't set it to 0
+			# as to not be too abrupt.
+			velocity.y += 0.6
+		else:
+			velocity.y -= 0.6
+		
 	return velocity
 
 
