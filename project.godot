@@ -146,7 +146,7 @@ jump={
 
 [physics]
 
-2d/default_gravity=10
+2d/default_gravity=900
 
 [rendering]
 
