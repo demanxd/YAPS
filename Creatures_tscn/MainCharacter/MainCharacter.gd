@@ -47,18 +47,7 @@ func _physics_process(_delta):
 	var is_on_platform = platform_detector.is_colliding()
 	_velocity = move_and_slide_with_snap(
 		_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
-	)
-#
-#	if direction.x != 0:
-#		move_and_collide(direction)
-
-	# We use the sprite's scale to store Robi’s look direction which allows us to shoot
-	# bullets forward.
-	# There are many situations like these where you can reuse existing properties instead of
-	# creating new variables.
-
-#	if animation != animation_player.current_animation and shoot_timer.is_stopped():
-#		animation_player.play(animation)
+		)
 
 
 func get_direction():
