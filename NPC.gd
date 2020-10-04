@@ -6,6 +6,7 @@ export var damage = 0
 
 onready var platform_detector = $PlatformDetector
 const FLOOR_DETECT_DISTANCE = 20.0
+onready var Label = $Label
 
 func _physics_process(_delta):
 	var direction = get_direction()
@@ -29,3 +30,18 @@ func get_direction():
 			if platform_detector.is_colliding()
 			else 0
 	)
+
+func _ready():
+	pass
+
+
+func set_text(string):
+	Label.text = string
+
+
+func show_text():
+	Label.visible = true
+
+
+func hide_text():
+	Label.visible = false

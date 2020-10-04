@@ -1,23 +1,24 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://textures/Creatures_text/MCFriends/MCFriend2PrototipeV1.png" type="Texture" id=1]
-[ext_resource path="res://Creatures_tscn/MCFriends/MCFriend2.gd" type="Script" id=2]
+[ext_resource path="res://Creatures_tscn/NPC.tscn" type="PackedScene" id=2]
 
-[node name="MCFriend2" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id=1]
+
+[node name="MCFriend2" instance=ExtResource( 2 )]
+collision_mask = 8
+
+[node name="Sprite" parent="." index="0"]
 scale = Vector2( 5, 5 )
-script = ExtResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 flip_h = true
 
-[node name="Label" type="Label" parent="."]
-margin_left = -210.0
-margin_top = -90.0
-margin_right = -10.0
-margin_bottom = -40.0
-align = 2
-valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -2, 20.5 )
+shape = SubResource( 1 )
+
+[node name="Label" parent="." index="3"]
+margin_left = -55.4374
+margin_top = -49.2568
+margin_right = -15.4374
+margin_bottom = -35.2568
