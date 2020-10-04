@@ -24,9 +24,6 @@ region_rect = Rect2( 0, 0, 1552, 848 )
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Barmen" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 104.662, 447.916 )
-
 [node name="MCFriend1" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 317.389, 450.375 )
 
@@ -38,6 +35,9 @@ position = Vector2( 640.078, 447.122 )
 
 [node name="Citizen2" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 734.521, 451.198 )
+
+[node name="Barmen" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 205.642, 444.69 )
 
 [node name="MainCharacter" parent="." instance=ExtResource( 4 )]
 position = Vector2( 386.798, 444.847 )
