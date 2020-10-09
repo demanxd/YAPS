@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://textures/tmp_text/wall.png" type="Texture" id=1]
 [ext_resource path="res://Locations/Floor.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Creatures_tscn/Citizen/Citizen1.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Creatures_tscn/Citizen/Citizen2.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Locations/Tavern_Room.gd" type="Script" id=9]
+[ext_resource path="res://aux_gds/dialogue_player/DialoguePlayer.tscn" type="PackedScene" id=10]
 
 [node name="Level_Tavern" type="Node2D"]
 script = ExtResource( 9 )
@@ -41,6 +42,8 @@ position = Vector2( 205.642, 444.69 )
 
 [node name="MainCharacter" parent="." instance=ExtResource( 4 )]
 position = Vector2( 386.798, 444.847 )
+
+[node name="DialoguePlayer" parent="." instance=ExtResource( 10 )]
 
 [node name="Timer" type="Timer" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
