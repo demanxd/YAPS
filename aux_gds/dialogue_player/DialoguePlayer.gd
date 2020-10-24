@@ -1,40 +1,41 @@
 extends Node
 
 export(String, FILE, "*.json") var dialogue_file
-var dialogue_keys = []
-var dialogue_name = ""
-var current = 0
-var dialogue_text = ""
+onready var dialogue_array = []
+onready var sentence_counter = 0
 
-signal dialogue_started
-signal dialogue_finished
 
+func setup_dial_syst():
+	generate_dial_array(load_dialogue())
 
 
 func load_dialogue():
-	var file = File.new()
-	if file.file_exists(dialogue_file):
-		file.open(dialogue_file, file.READ)
-		var dialogue = parse_json(file.get_as_text())
-		print(dialogue)
-		return dialogue
+	var _file = File.new()
+	if _file.file_exists(dialogue_file):
+		_file.open(dialogue_file, _file.READ)
+		var _dialogue = parse_json(_file.get_as_text())
+#		print(_dialogue)
+		return _dialogue
 
 
-func generate_dict(dial):
-	var dictionary_name : String
-	var dictionary_text : String
+func generate_dial_array(dial):
+	var _dictionary_name : String
+	var _dictionary_text : String
 	
-	var dictionary = []
+	for _any in dial:
+		dialogue_array.append(dial[_any])
 	
-	for any in dial:
-		dictionary.append(dial[any])
-		continue
+	for _any in dialogue_array:
+		_dictionary_text = _any.text
+		_dictionary_name = _any.name
+#		print(dictionary_name, " :-=-=-: ", dictionary_text)
 	
-	for any in dictionary:
-		dictionary_text = any.text
-		dictionary_name = any.name
-		print(dictionary_name, " :-=-=-: ", dictionary_text)
-	
-	for any in dictionary:
-		print(any.emotion)
-	
+#	for any in dictionary:
+#		print(any.emotion)
+
+
+func get_sentence():
+	var _tmp_arr = dialogue_array[sentence_counter]
+	sentence_counter += 1
+#	print(_tmp_arr.text, " :-=-=-: ", _tmp_arr.name)
+	return _tmp_arr

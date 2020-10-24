@@ -10,7 +10,14 @@ onready var DialSyst = $DialoguePlayer
 
 
 func _ready():
-	DialSyst.generate_dict(DialSyst.load_dialogue())
+	#======Debugging: dialogue system======S#
+	DialSyst.setup_dial_syst()
+	var arr1 = DialSyst.get_sentence()
+	var arr2 = DialSyst.get_sentence()
+	arr2 = DialSyst.get_sentence()
+	print(arr1.name, " :=-=-=: ", arr1.emotion, " :=-=-=: ", arr1.text)
+	print(arr2.name, " :=-=-=: ", arr2.emotion, " :=-=-=: ", arr2.text)
+	#======Debugging: dialogue system======#
 
 
 #timerblock================
