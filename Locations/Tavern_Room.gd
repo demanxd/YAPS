@@ -5,19 +5,30 @@ onready var TEXT_SHOWING = false
 onready var TIMER_SET_ONCE = false
 
 onready var Timer = $Timer
-onready var MCF1  = $YSort/MCFriend1
+onready var MCF1  = $NPC/MCFriend1
 onready var DialSyst = $DialoguePlayer
+onready var NPC_list = $NPC
 
 
 func _ready():
-	#======Debugging: dialogue system======S#
-	DialSyst.setup_dial_syst()
-	var arr1 = DialSyst.get_sentence()
-	var arr2 = DialSyst.get_sentence()
-	arr2 = DialSyst.get_sentence()
-	print(arr1.name, " :=-=-=: ", arr1.emotion, " :=-=-=: ", arr1.text)
-	print(arr2.name, " :=-=-=: ", arr2.emotion, " :=-=-=: ", arr2.text)
 	#======Debugging: dialogue system======#
+#	var arr1 = DialSyst.get_sentence()
+#	var arr2 = DialSyst.get_sentence()
+#	arr2 = DialSyst.get_sentence()
+#	print(arr1.name, " :=-=-=: ", arr1.emotion, " :=-=-=: ", arr1.text)
+#	print(arr2.name, " :=-=-=: ", arr2.emotion, " :=-=-=: ", arr2.text)
+	#======Debugging: dialogue system======#
+	
+	DialSyst.setup_dial_syst()
+	var person = DialSyst.get_sentence()
+	
+	while not DialSyst.last_sentence_reached:
+		person = DialSyst.get_sentence()
+		if NPC_list.get_node(person.name):
+			NPC_list.get_node(person.name).set_sentence_state(person)
+	
+	print("last sentence was reached")
+	
 
 
 #timerblock================

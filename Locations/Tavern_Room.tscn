@@ -23,21 +23,21 @@ region_rect = Rect2( 0, 0, 1552, 848 )
 
 [node name="Floor" parent="." instance=ExtResource( 2 )]
 
-[node name="YSort" type="YSort" parent="."]
+[node name="NPC" type="YSort" parent="."]
 
-[node name="MCFriend1" parent="YSort" instance=ExtResource( 5 )]
+[node name="MCFriend1" parent="NPC" instance=ExtResource( 5 )]
 position = Vector2( 327.851, 444.558 )
 
-[node name="MCFriend2" parent="YSort" instance=ExtResource( 6 )]
+[node name="MCFriend2" parent="NPC" instance=ExtResource( 6 )]
 position = Vector2( 436.347, 442.183 )
 
-[node name="Citizen1" parent="YSort" instance=ExtResource( 7 )]
+[node name="Citizen1" parent="NPC" instance=ExtResource( 7 )]
 position = Vector2( 658.033, 448.357 )
 
-[node name="Citizen2" parent="YSort" instance=ExtResource( 8 )]
+[node name="Citizen2" parent="NPC" instance=ExtResource( 8 )]
 position = Vector2( 717.524, 450.041 )
 
-[node name="Barmen" parent="YSort" instance=ExtResource( 3 )]
+[node name="Barmen" parent="NPC" instance=ExtResource( 3 )]
 position = Vector2( 205.642, 444.69 )
 
 [node name="MainCharacter" parent="." instance=ExtResource( 4 )]

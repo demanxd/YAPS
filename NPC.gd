@@ -7,6 +7,7 @@ export var damage = 0
 onready var platform_detector = $PlatformDetector
 const FLOOR_DETECT_DISTANCE = 20.0
 onready var Label = $Label
+onready var sentence = []
 
 func _physics_process(_delta):
 	var direction = get_direction()
@@ -45,3 +46,13 @@ func show_text():
 
 func hide_text():
 	Label.visible = false
+
+func set_sentence_state(_sentence):
+	print("sentence input")
+	sentence = _sentence
+	set_text(sentence.text)
+	show_text()
+
+
+func set_state():
+	pass
