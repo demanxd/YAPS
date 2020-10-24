@@ -11,23 +11,28 @@ onready var NPC_list = $NPC
 
 
 func _ready():
-	#======Debugging: dialogue system======#
-#	var arr1 = DialSyst.get_sentence()
-#	var arr2 = DialSyst.get_sentence()
-#	arr2 = DialSyst.get_sentence()
-#	print(arr1.name, " :=-=-=: ", arr1.emotion, " :=-=-=: ", arr1.text)
-#	print(arr2.name, " :=-=-=: ", arr2.emotion, " :=-=-=: ", arr2.text)
-	#======Debugging: dialogue system======#
-	
 	DialSyst.setup_dial_syst()
-	var person = DialSyst.get_sentence()
+	var person
 	
 	while not DialSyst.last_sentence_reached:
+		if person != null:
+			if NPC_list.get_node(person.name) != null:
+				NPC_list.get_node(person.name).hide_text()
+		
 		person = DialSyst.get_sentence()
+		
 		if NPC_list.get_node(person.name) == null:
 			print_debug("WARNING: the person with ", person.name, " name doesn't exist")
 		else :
 			NPC_list.get_node(person.name).set_sentence_state(person)
+			
+		Timer.set_wait_time(int(person.live_time)) 		# Set the wait time
+		Timer.start()			# Start it
+		yield(Timer, "timeout")		# Finally, make the script stop with the yield
+	
+	if person != null:
+		if NPC_list.get_node(person.name) != null:
+			NPC_list.get_node(person.name).hide_text()
 	
 	print("last sentence was reached")
 	
@@ -64,14 +69,15 @@ func timer_true():
 
 
 func _process(delta):
-	if !TEXT_SHOWING:
-		if !TIMER_SET_ONCE:
-			set_timer(2)
-			MCF1.set_text("Hello there!")
-			MCF1.show_text()
-			TIMER_SET_ONCE = true
-	else:
-		if !TIMER_SET_ONCE:
-			set_timer(2)
-			MCF1.hide_text()
-			TIMER_SET_ONCE = true
+#	if !TEXT_SHOWING:
+#		if !TIMER_SET_ONCE:
+#			set_timer(2)
+#			MCF1.set_text("Hello there!")
+#			MCF1.show_text()
+#			TIMER_SET_ONCE = true
+#	else:
+#		if !TIMER_SET_ONCE:
+#			set_timer(2)
+#			MCF1.hide_text()
+#			TIMER_SET_ONCE = true
+	pass
