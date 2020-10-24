@@ -1,6 +1,6 @@
 {
-  "dialog_1" : {"name": "Unknown", "emotion": "Sad", "text": "Hey, it's a good time to have a JRPG fight, right?", "live_time":"5"},
-  "dialog_2" : {"name": "Unknown", "emotion": "Sad", "text": "Let me introduce myself, I'm the OPPONENT", "live_time":"5"},
-  "dialog_3" : {"name": "Opponent", "emotion": "Happy", "text": "Enough talking. Let's fight!", "live_time":"5"},
+  "dialog_1" : {"name": "MCFriend1", "emotion": "Sad", "text": "Hey, it's a good time to have a JRPG fight, right?", "live_time":"5"},
+  "dialog_2" : {"name": "MCFriend2", "emotion": "Sad", "text": "Let me introduce myself, I'm the OPPONENT", "live_time":"5"},
+  "dialog_3" : {"name": "MCFriend1", "emotion": "Happy", "text": "Enough talking. Let's fight!", "live_time":"5"},
   "dialog_4" : {"name": "Barmen", "emotion": "None", "text": "Hey, everyone!", "live_time":"5"},
 }
