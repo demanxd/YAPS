@@ -6,22 +6,23 @@ onready var TIMER_SET_ONCE = false
 
 onready var Timer = $Timer
 onready var MCF1  = $YSort/MCFriend1
+onready var DialSyst = $DialoguePlayer
 
 
 func _ready():
-	pass
+	DialSyst.generate_dict(DialSyst.load_dialogue())
 
 
 #timerblock================
 func set_timer(s):
-	print_debug("setting timer")
+#	print_debug("setting timer")
 	Timer.set_wait_time(s)
 	Timer.set_one_shot(true)
 	Timer.start()
 
 
 func _on_Timer_timeout():
-	print_debug("called + Timer state = ", TIMER_STATE)
+#	print_debug("called + Timer state = ", TIMER_STATE)
 	if TIMER_STATE:
 		timer_true()
 	else:
