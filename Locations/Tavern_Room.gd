@@ -24,7 +24,9 @@ func _ready():
 	
 	while not DialSyst.last_sentence_reached:
 		person = DialSyst.get_sentence()
-		if NPC_list.get_node(person.name):
+		if NPC_list.get_node(person.name) == null:
+			print_debug("WARNING: the person with ", person.name, " name doesn't exist")
+		else :
 			NPC_list.get_node(person.name).set_sentence_state(person)
 	
 	print("last sentence was reached")
