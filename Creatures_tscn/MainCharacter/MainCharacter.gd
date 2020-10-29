@@ -38,16 +38,17 @@ func _ready():
 # - If you split the character into a state machine or more advanced pattern,
 #   you can easily move individual functions.
 func _physics_process(_delta):
-	var direction = get_direction()
-
-	var is_jump_interrupted = Input.is_action_just_released("jump" + action_suffix) and _velocity.y < 0.0
-	_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
-
-	var snap_vector = Vector2.DOWN * FLOOR_DETECT_DISTANCE if direction.y == 0.0 else Vector2.ZERO
-	var is_on_platform = platform_detector.is_colliding()
-	_velocity = move_and_slide_with_snap(
-		_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
-		)
+	if is_moveble:
+		var direction = get_direction()
+	
+		var is_jump_interrupted = Input.is_action_just_released("jump" + action_suffix) and _velocity.y < 0.0
+		_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
+	
+		var snap_vector = Vector2.DOWN * FLOOR_DETECT_DISTANCE if direction.y == 0.0 else Vector2.ZERO
+		var is_on_platform = platform_detector.is_colliding()
+		_velocity = move_and_slide_with_snap(
+			_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
+			)
 
 
 func get_direction():
