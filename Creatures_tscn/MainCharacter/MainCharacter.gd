@@ -12,6 +12,7 @@ export(String) var action_suffix = ""
 onready var platform_detector = $PlatformDetector
 #onready var animation_player = $AnimationPlayer
 onready var sprite = $Sprite
+onready var camera = $Camera2D
 
 
 func _ready():
@@ -38,7 +39,7 @@ func _ready():
 # - If you split the character into a state machine or more advanced pattern,
 #   you can easily move individual functions.
 func _physics_process(_delta):
-	if is_moveble:
+	if is_movable:
 		var direction = get_direction()
 	
 		var is_jump_interrupted = Input.is_action_just_released("jump" + action_suffix) and _velocity.y < 0.0
@@ -46,6 +47,10 @@ func _physics_process(_delta):
 	
 		var snap_vector = Vector2.DOWN * FLOOR_DETECT_DISTANCE if direction.y == 0.0 else Vector2.ZERO
 		var is_on_platform = platform_detector.is_colliding()
+		
+		if not is_on_platform:
+			print_debug(self.name, " WARNING: Not on platform!");
+			
 		_velocity = move_and_slide_with_snap(
 			_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
 			)
@@ -87,3 +92,10 @@ func get_new_animation(is_shooting = false):
 	else:
 		animation_new = "falling" if _velocity.y > 0 else "jumping"
 	return animation_new
+
+func set_camera_limits(x_left, x_right, y_top, y_bottom):
+	camera.limit_top    = y_top
+	camera.limit_left   = x_left
+	camera.limit_right  = x_right
+	camera.limit_bottom = y_bottom
+	pass

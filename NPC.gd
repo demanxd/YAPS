@@ -16,6 +16,8 @@ func _physics_process(_delta):
 	
 	if not is_on_platform:
 		_velocity.y *= 0.6
+		print_debug(self.name, " WARNING: Not on platform!");
+	
 	if direction.y != 0.0:
 		_velocity.y = speed.y * direction.y
 	
