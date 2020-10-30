@@ -16,6 +16,9 @@ texture = ExtResource( 2 )
 position = Vector2( 3, 23 )
 shape = SubResource( 1 )
 
+[node name="PlatformDetector" parent="." index="2"]
+cast_to = Vector2( 0, 35 )
+
 [node name="Label" parent="." index="3"]
 margin_left = 20.7134
 margin_top = -57.0175

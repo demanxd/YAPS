@@ -53,4 +53,34 @@ dialogue_file = "res://aux_gds/dialogue_data/npc.json"
 
 [node name="Platform_1_rock" parent="." instance=ExtResource( 11 )]
 position = Vector2( 502.747, 462.216 )
+
+[node name="Platform_1_rock2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1632.41, 485.379 )
+
+[node name="Platform_1_rock3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1733.97, 442.616 )
+
+[node name="Platform_1_rock4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1860.48, 517.452 )
+
+[node name="Platform_1_rock5" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1951.35, 476.47 )
+
+[node name="Platform_1_rock6" parent="." instance=ExtResource( 11 )]
+position = Vector2( 2035.09, 424.798 )
+
+[node name="Platform_1_rock8" parent="." instance=ExtResource( 11 )]
+position = Vector2( 2120.62, 376.69 )
+
+[node name="Platform_1_rock9" parent="." instance=ExtResource( 11 )]
+position = Vector2( 2051.13, 323.236 )
+
+[node name="Platform_1_rock10" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1817.71, 357.09 )
+
+[node name="Platform_1_rock11" parent="." instance=ExtResource( 11 )]
+position = Vector2( 2241.78, 415.889 )
+
+[node name="Platform_1_rock7" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1926.4, 365.999 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,5 +1,6 @@
 class_name Player
 extends Actor
+#https://www.youtube.com/c/GameEndeavor/videos
 
 
 const FLOOR_DETECT_DISTANCE = 20.0
@@ -47,9 +48,10 @@ func _physics_process(_delta):
 	
 		var snap_vector = Vector2.DOWN * FLOOR_DETECT_DISTANCE if direction.y == 0.0 else Vector2.ZERO
 		var is_on_platform = platform_detector.is_colliding()
+#		var is_on_platform = is_on_floor()
 		
-		if not is_on_platform:
-			print_debug(self.name, " WARNING: Not on platform!");
+#		if not is_on_platform:
+#			print_debug(self.name, " WARNING: Not on platform!");
 			
 		_velocity = move_and_slide_with_snap(
 			_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
