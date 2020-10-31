@@ -28,14 +28,8 @@ position = Vector2( 20.8659, 57.1172 )
 [node name="Platform_1_rock" parent="." instance=ExtResource( 5 )]
 position = Vector2( 589.259, 80.2805 )
 
-[node name="Platform_1_rock2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 671.222, 39.2992 )
-
-[node name="Platform_1_rock3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 783.475, 3.66327 )
-
 [node name="Platform_1_rock4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 534.024, 101.662 )
 
 [node name="Platform_2_rock_balancer" parent="." instance=ExtResource( 6 )]
-position = Vector2( 885.289, -9.29938 )
+position = Vector2( 673.861, 49.2209 )
