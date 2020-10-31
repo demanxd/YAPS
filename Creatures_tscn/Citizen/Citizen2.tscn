@@ -4,6 +4,8 @@
 [ext_resource path="res://Creatures_tscn/NPC.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
+radius = 12.3506
+height = 51.3843
 
 [node name="Citizen2" instance=ExtResource( 2 )]
 collision_mask = 8
@@ -13,7 +15,7 @@ scale = Vector2( 5, 5 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( -5, 20 )
+position = Vector2( -5, 3 )
 shape = SubResource( 1 )
 
 [node name="Label" parent="." index="3"]

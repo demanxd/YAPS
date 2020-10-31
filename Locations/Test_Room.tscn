@@ -12,11 +12,11 @@
 position = Vector2( -112.769, 124.826 )
 
 [node name="MainCharacter" parent="." instance=ExtResource( 2 )]
-position = Vector2( 211.518, 46.4264 )
+position = Vector2( 204.391, -35.5363 )
 is_movable = true
 
 [node name="Citizen1" parent="." instance=ExtResource( 1 )]
-position = Vector2( 485.915, 62.4626 )
+position = Vector2( 480.57, -88.9902 )
 
 [node name="Citizen2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 20.8659, 57.1172 )
