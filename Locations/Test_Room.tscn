@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Creatures_tscn/Citizen/Citizen1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Creatures_tscn/MainCharacter/MainCharacter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Creatures_tscn/Citizen/Citizen2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Locations/Floor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Environment_tscn/Platforms/Platform_1_rock.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Environment_tscn/Platforms/Platform_2_rock_balancer.tscn" type="PackedScene" id=6]
 
 [node name="Test_Room" type="Node2D"]
 
@@ -16,6 +17,9 @@ position = Vector2( 204.391, -35.5363 )
 is_movable = true
 
 [node name="Citizen1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 480.57, -88.9902 )
+
+[node name="Citizen3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 480.57, -88.9902 )
 
 [node name="Citizen2" parent="." instance=ExtResource( 3 )]
@@ -32,3 +36,6 @@ position = Vector2( 783.475, 3.66327 )
 
 [node name="Platform_1_rock4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 534.024, 101.662 )
+
+[node name="Platform_2_rock_balancer" parent="." instance=ExtResource( 6 )]
+position = Vector2( 885.289, -9.29938 )

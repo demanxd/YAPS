@@ -56,6 +56,10 @@ func _physics_process(_delta):
 		_velocity = move_and_slide_with_snap(
 			_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
 			)
+		for i in get_slide_count():
+			var collision = get_slide_collision(i)
+			if collision.collider.has_method("collide_with"):
+				collision.collider.collide_with(collision, self)
 
 
 func get_direction():
