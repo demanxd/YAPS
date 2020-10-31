@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://textures/tmp_text/floor.png" type="Texture" id=1]
+[ext_resource path="res://Environment_tscn/Platforms/Platform_Base.tscn" type="PackedScene" id=2]
+
+[node name="Platform_1_rock" instance=ExtResource( 2 )]
+collision_layer = 8
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 50, 10 )
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PoolVector2Array( -25, -5, -25, 5, 25, 5, 25, -5 )
