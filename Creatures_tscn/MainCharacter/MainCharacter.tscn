@@ -10,6 +10,7 @@ height = 53.1178
 [node name="MainCharacter" type="KinematicBody2D"]
 collision_mask = 8
 script = ExtResource( 2 )
+is_movable = true
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 6, 0 )

@@ -17,6 +17,7 @@ onready var camera = $Camera2D
 
 
 func _ready():
+	print_debug(self.name, " at position ", self.global_position)
 	# Static types are necessary here to avoid warnings.
 	pass
 

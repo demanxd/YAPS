@@ -13,13 +13,9 @@
 position = Vector2( -112.769, 124.826 )
 
 [node name="MainCharacter" parent="." instance=ExtResource( 2 )]
-position = Vector2( 204.391, -35.5363 )
-is_movable = true
+position = Vector2( 660.284, -42.1434 )
 
 [node name="Citizen1" parent="." instance=ExtResource( 1 )]
-position = Vector2( 480.57, -88.9902 )
-
-[node name="Citizen3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 480.57, -88.9902 )
 
 [node name="Citizen2" parent="." instance=ExtResource( 3 )]
@@ -30,6 +26,9 @@ position = Vector2( 589.259, 80.2805 )
 
 [node name="Platform_1_rock4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 534.024, 101.662 )
+
+[node name="Platform_1_rock5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 770.024, 82.662 )
 
 [node name="Platform_2_rock_balancer" parent="." instance=ExtResource( 6 )]
 position = Vector2( 673.861, 49.2209 )
