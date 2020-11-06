@@ -23,13 +23,12 @@ func _ready():
 
 func _physics_process(delta):
 	var delta_pos = abs(center_point.global_position.x) - abs(contact_obj.global_position.x)
+	alpha = rotation_speed * delta_pos * contact_obj.mass / 10
 #	print_debug(self.name, " rotation speed = ", alpha)
 	if delta_pos > 0 and delta_pos < max_distance:
-		alpha = rotation_speed * delta_pos / 10
 #		print_debug(self.name, " > 0", contact_obj.name, " in position ", contact_obj.global_position.x)
 		rotation -= alpha
 	elif delta_pos < 0 and delta_pos > -max_distance:
-		alpha = rotation_speed * delta_pos / 10
 #		print_debug(self.name, " < 0", contact_obj.name, " in position ", contact_obj.global_position.x)
 		rotation -= alpha
 	else:

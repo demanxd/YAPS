@@ -1,6 +1,7 @@
 class_name Player
 extends Actor
 #https://www.youtube.com/c/GameEndeavor/videos
+#https://vk.com/wall-165072537_2325
 
 
 const FLOOR_DETECT_DISTANCE = 20.0
