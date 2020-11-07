@@ -33,3 +33,4 @@ position = Vector2( 770.024, 82.662 )
 
 [node name="Platform_2_rock_balancer" parent="." instance=ExtResource( 6 )]
 position = Vector2( 673.861, 49.2209 )
+rotation_speed = 0.05

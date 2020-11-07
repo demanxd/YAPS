@@ -15,33 +15,35 @@ export var rotation_speed : float = 0.001
 export var reset_time : float = 1.0
 
 onready var reset_position = global_position
+onready var last_seen_pos
+onready var contact_mass
+onready var is_colliding : bool
 
 func _ready():
-#	print_debug(self.name, " at position ", self.global_position)
 	set_physics_process(false)
 
 
 func _physics_process(delta):
 	var delta_pos = abs(center_point.global_position.x) - abs(contact_obj.global_position.x)
-	alpha = rotation_speed * delta_pos * contact_obj.mass / 10
-#	print_debug(self.name, " rotation speed = ", alpha)
-	if delta_pos > 0 and delta_pos < max_distance:
-#		print_debug(self.name, " > 0", contact_obj.name, " in position ", contact_obj.global_position.x)
+	alpha = rotation_speed * delta * last_seen_pos * contact_mass / 10 
+	if is_colliding:
+		print_debug(contact_obj.name, " in position ", last_seen_pos)
 		rotation -= alpha
-	elif delta_pos < 0 and delta_pos > -max_distance:
-#		print_debug(self.name, " < 0", contact_obj.name, " in position ", contact_obj.global_position.x)
-		rotation -= alpha
+		is_colliding = false
 	else:
-		if fmod(self.rotation, PI) > 0.1 or fmod(self.rotation, PI) < -0.1:
-			timer.start(reset_time)
+		if fmod(self.rotation, PI) > 0.2 or fmod(self.rotation, PI) < 0.2:
 			rotation -= alpha
-			print(self.name, "rotation = ", self.rotation_degrees)
+			print_debug(self.name, " rotation = ", self.rotation_degrees)
+			timer.start(delta)
 		else:
 			set_physics_process(false)
 
 
 func collide_with(collision : KinematicCollision2D, collider : KinematicBody2D):
+	is_colliding = true
 	contact_obj = collider
+	contact_mass = collider.mass
+	last_seen_pos = abs(center_point.global_position.x) - abs(contact_obj.global_position.x)
 	timer.start(reset_time)
 	set_physics_process(true)
 	timer.start(reset_time)
