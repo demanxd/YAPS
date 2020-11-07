@@ -44,7 +44,6 @@ position = Vector2( 205.642, 444.69 )
 
 [node name="MainCharacter" parent="." instance=ExtResource( 4 )]
 position = Vector2( 386.798, 444.847 )
-is_movable = true
 
 [node name="DialoguePlayer" parent="." instance=ExtResource( 10 )]
 dialogue_file = "res://aux_gds/dialogue_data/npc.json"

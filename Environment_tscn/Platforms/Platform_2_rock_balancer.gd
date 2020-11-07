@@ -10,11 +10,8 @@ export var max_distance = 30
 
 onready var alpha : float
 
-
 export var rotation_speed : float = 0.001
-export var reset_time : float = 1.0
 
-onready var reset_position = global_position
 onready var last_seen_pos
 onready var contact_mass
 onready var is_colliding : bool
@@ -27,7 +24,6 @@ func _physics_process(delta):
 	alpha = rotation_speed * delta * last_seen_pos * contact_mass / 10 
 	
 	if is_colliding:
-		print_debug(contact_obj.name, " in position ", last_seen_pos)
 		rotation -= alpha
 		is_colliding = false
 	
@@ -45,11 +41,9 @@ func _physics_process(delta):
 
 func collide_with(collision : KinematicCollision2D, collider : KinematicBody2D):
 	is_colliding = true
-	contact_obj = collider
 	contact_mass = collider.mass
-	last_seen_pos = abs(center_point.global_position.x) - abs(contact_obj.global_position.x)
+	last_seen_pos = abs(center_point.global_position.x) - abs(collider.global_position.x)
 	set_physics_process(true)
-	velocity = Vector2.ZERO
 
 
 
