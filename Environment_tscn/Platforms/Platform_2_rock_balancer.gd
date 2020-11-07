@@ -24,17 +24,21 @@ func _ready():
 
 
 func _physics_process(delta):
-	var delta_pos = abs(center_point.global_position.x) - abs(contact_obj.global_position.x)
 	alpha = rotation_speed * delta * last_seen_pos * contact_mass / 10 
+	
 	if is_colliding:
 		print_debug(contact_obj.name, " in position ", last_seen_pos)
 		rotation -= alpha
 		is_colliding = false
+	
 	else:
-		if fmod(self.rotation, PI) > 0.2 or fmod(self.rotation, PI) < 0.2:
+		if ((fmod(self.rotation_degrees, 180) > -180 and fmod(self.rotation_degrees, 180) < -1) or
+				(fmod(self.rotation_degrees, 180) < 180 and fmod(self.rotation_degrees, 180) > 1)):
 			rotation -= alpha
-			print_debug(self.name, " rotation = ", self.rotation_degrees)
-			timer.start(delta)
+		
+		elif (fmod(self.rotation_degrees, 180) > 0 or fmod(self.rotation_degrees, 180) < 0):
+			self.rotation_degrees -= fmod(self.rotation_degrees, 180)
+		
 		else:
 			set_physics_process(false)
 
@@ -44,9 +48,7 @@ func collide_with(collision : KinematicCollision2D, collider : KinematicBody2D):
 	contact_obj = collider
 	contact_mass = collider.mass
 	last_seen_pos = abs(center_point.global_position.x) - abs(contact_obj.global_position.x)
-	timer.start(reset_time)
 	set_physics_process(true)
-	timer.start(reset_time)
 	velocity = Vector2.ZERO
 
 
