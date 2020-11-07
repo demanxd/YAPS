@@ -9,18 +9,15 @@ export var second_position : Vector2
 
 onready var reset_position = global_position
 
-export var move_speed = 2.0
-export var move_distance = 50.0
-export var move_direction = Vector2(1, 1)
+export var move_speed = 1.0
 var time_since_init = 0.0
-var origin = Vector2(0, 0)
+var move_direction = Vector2.ZERO
 
 onready var dir : bool
 
 
 func _ready():
 	time_since_init = 0.0
-	origin = position
 	move_direction = first_position - second_position
 
 
@@ -38,12 +35,12 @@ func _physics_process(delta):
 	if dir:
 		position_on_curve = sin(time_since_init * PI * move_speed)
 		offset = position_on_curve * (second_position - first_position)
-		position = origin + offset
+		position += offset
 	
 	else:
 		position_on_curve = sin(time_since_init * PI * move_speed)
 		offset = position_on_curve * (first_position - second_position)
-		position = origin + offset
+		position += offset
 
 
 
