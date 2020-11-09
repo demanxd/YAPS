@@ -1,87 +1,51 @@
+  
+"""Moving platform, moves to target positions given by the Waypoints node"""
+tool
 extends KinematicBody2D
 
-onready var collision = $CollisionPolygon2D
-onready var velocity = Vector2.ZERO
-onready var is_triggered = false
+onready var wait_timer: Timer = $Timer
+onready var waypoints: = get_node(waypoints_path)
 
-export var first_position : Vector2
-export var second_position : Vector2
+export var editor_process: = true setget set_editor_process
+export var speed: = 400.0
+export var waypoints_path: = NodePath()
 
-onready var reset_position = global_position
+var target_position: = Vector2()
 
-export var move_speed = 1.0
-var time_since_init = 0.0
-var move_direction = Vector2.ZERO
-
-onready var dir : bool
-
-
-func _ready():
-	time_since_init = 0.0
-	move_direction = first_position - second_position
+func _ready() -> void:
+	if not waypoints:
+		set_physics_process(false)
+		return
+	position = waypoints.get_start_position()
+	target_position = waypoints.get_next_point_position()
 
 
-func _physics_process(delta):
-	time_since_init = time_since_init + delta
-	var position_on_curve
-	var offset
-	
-	if position == first_position:
-		dir = true
-	
-	elif position == second_position:
-		dir = false
-	
-	if dir:
-		position_on_curve = sin(time_since_init * PI * move_speed)
-		offset = position_on_curve * (second_position - first_position)
-		position += offset
-	
+func _physics_process(delta: float) -> void:
+	var direction: = (target_position - position).normalized()
+	var motion: = direction * speed * delta
+	var distance_to_target: = position.distance_to(target_position)
+	if motion.length() > distance_to_target:
+		position = target_position
+		target_position = waypoints.get_next_point_position()
+		set_physics_process(false)
+		wait_timer.start()
 	else:
-		position_on_curve = sin(time_since_init * PI * move_speed)
-		offset = position_on_curve * (first_position - second_position)
-		position += offset
+		position += motion
 
 
+func _draw() -> void:
+	var shape: = $CollisionShape2D
+	var extents: Vector2 = shape.shape.extents * 2.0
+	var rect: = Rect2(shape.position - extents / 2.0, extents)
+	draw_rect(rect, Color('fff'))
 
 
+func set_editor_process(value:bool) -> void:
+	editor_process = value
+	if not Engine.editor_hint:
+		return
+	set_physics_process(value)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#func _ready():
-#	print_debug(self.name, " ready called")
-#	set_physics_process(false)
-#
-#
-#func _physics_process(delta):
-#	print_debug(self.name, " physics_process called")
-#	position += velocity
-#
-#
-#func collide_with(collision : KinematicCollision2D, collider : KinematicBody2D):
-#	print_debug(self.name, " collide_with triggered")
-#	if !is_triggered:
-#		set_physics_process(true)
-#		is_triggered = true
-#		velocity = Vector2.ZERO
-#
-#func _on_AnimationPlayer_animation_finished():
-#	set_physics_process(true)
-#
-#func _on_ResetTimer_timeout():
-#	set_physics_process(false)
-#	yield(get_tree(),"physics_frame")
-#	global_position = reset_position
+func _on_Timer_timeout() -> void:
+	set_physics_process(true)
