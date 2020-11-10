@@ -39,6 +39,10 @@ rotation_speed = 0.05
 
 [node name="Waypoints" parent="." instance=ExtResource( 8 )]
 position = Vector2( 837.57, 2.70905 )
+editor_process = true
+line_color = Color( 0.228943, 0.710254, 0.945312, 1 )
+line_width = 10.0
+triangle_color = Color( 0.722656, 0.908997, 1, 1 )
 
 [node name="0" type="Position2D" parent="Waypoints"]
 position = Vector2( -3.77551, 60.4081 )
@@ -53,5 +57,5 @@ position = Vector2( 168.954, -34.9235 )
 position = Vector2( -18.8775, -72.6785 )
 
 [node name="Platform_Moveble" parent="." instance=ExtResource( 7 )]
-position = Vector2( 833.794, 63.1171 )
+position = Vector2( 1038.62, 58.3979 )
 waypoints_path = NodePath("../Waypoints")

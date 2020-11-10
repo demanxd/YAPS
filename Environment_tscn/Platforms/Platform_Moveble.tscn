@@ -24,3 +24,4 @@ one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 shape = SubResource( 1 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
