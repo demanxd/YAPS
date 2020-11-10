@@ -1,12 +1,9 @@
 extends KinematicBody2D
 
 onready var collision = $CollisionPolygon2D
-onready var gravity = ProjectSettings.get("physics/2d/default_gravity")
 onready var velocity = Vector2.ZERO
 onready var timer = $Timer
 onready var center_point = $Position2D
-onready var contact_obj : KinematicBody2D
-export var max_distance = 30
 
 onready var alpha : float
 

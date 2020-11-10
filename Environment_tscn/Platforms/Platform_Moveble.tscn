@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Environment_tscn/Platforms/Platform_Base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Environment_tscn/Platforms/Platform_Moveble.gd" type="Script" id=2]
 [ext_resource path="res://textures/tmp_text/floor.png" type="Texture" id=3]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30.1785, 9.9757 )
 
 [node name="Platform_Moveble" instance=ExtResource( 1 )]
 motion/sync_to_physics = true
@@ -21,7 +18,4 @@ polygon = PoolVector2Array( -30, -10, 30, -10, 30, 10, -30, 10 )
 
 [node name="Timer" type="Timer" parent="." index="2"]
 one_shot = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
-shape = SubResource( 1 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -6,7 +6,6 @@
 
 [node name="Platform_2_rock_balancer" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
-max_distance = 39
 rotation_speed = 0.002
 
 [node name="Sprite" parent="." index="0"]
@@ -18,5 +17,3 @@ region_rect = Rect2( 0, 0, 60, 20 )
 polygon = PoolVector2Array( -30, -10, -30, 10, 30, 10, 30, -10 )
 
 [node name="Position2D" type="Position2D" parent="." index="2"]
-
-[node name="Timer" type="Timer" parent="." index="3"]

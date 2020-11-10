@@ -12,14 +12,11 @@ var IN_AIR = false
 export(String) var action_suffix = ""
 
 onready var platform_detector = $PlatformDetector
-#onready var animation_player = $AnimationPlayer
 onready var sprite = $Sprite
 onready var camera = $Camera2D
 
 
 func _ready():
-#	print_debug(self.name, " at position ", self.global_position)
-	# Static types are necessary here to avoid warnings.
 	pass
 
 

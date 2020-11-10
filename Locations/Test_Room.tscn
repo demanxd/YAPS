@@ -21,6 +21,9 @@ mass = 5
 [node name="Citizen1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 480.57, -88.9902 )
 
+[node name="Citizen3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1006, -44.543 )
+
 [node name="Citizen2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 20.8659, 57.1172 )
 
@@ -50,12 +53,7 @@ position = Vector2( -3.77551, 60.4081 )
 [node name="1" type="Position2D" parent="Waypoints"]
 position = Vector2( 201.046, 55.6888 )
 
-[node name="2" type="Position2D" parent="Waypoints"]
-position = Vector2( 168.954, -34.9235 )
-
-[node name="3" type="Position2D" parent="Waypoints"]
-position = Vector2( -18.8775, -72.6785 )
-
 [node name="Platform_Moveble" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1038.62, 58.3979 )
+position = Vector2( 833.794, 63.1171 )
 waypoints_path = NodePath("../Waypoints")
+wait_time = 2.0

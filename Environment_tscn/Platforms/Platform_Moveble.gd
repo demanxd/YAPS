@@ -9,6 +9,7 @@ onready var waypoints: = get_node(waypoints_path)
 export var editor_process: = true setget set_editor_process
 export var speed: = 400.0
 export var waypoints_path: = NodePath()
+export var wait_time : = 1.0
 
 var target_position: = Vector2()
 
@@ -28,16 +29,9 @@ func _physics_process(delta: float) -> void:
 		position = target_position
 		target_position = waypoints.get_next_point_position()
 		set_physics_process(false)
-		wait_timer.start()
+		wait_timer.start(wait_time)
 	else:
 		position += motion
-
-
-func _draw() -> void:
-	var shape: = $CollisionShape2D
-	var extents: Vector2 = shape.shape.extents * 2.0
-	var rect: = Rect2(shape.position - extents / 2.0, extents)
-	draw_rect(rect, Color('fff'))
 
 
 func set_editor_process(value:bool) -> void:
