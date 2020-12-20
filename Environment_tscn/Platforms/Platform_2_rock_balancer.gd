@@ -1,17 +1,22 @@
 extends KinematicBody2D
 
+
 onready var collision = $CollisionPolygon2D
 onready var velocity = Vector2.ZERO
 onready var timer = $Timer
 onready var center_point = $Position2D
 
+
 onready var alpha : float
 
+
 export var rotation_speed : float = 0.001
+
 
 onready var last_seen_pos
 onready var contact_mass
 onready var is_colliding : bool
+
 
 func _ready():
 	set_physics_process(false)

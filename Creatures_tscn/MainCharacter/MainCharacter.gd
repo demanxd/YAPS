@@ -40,6 +40,11 @@ func _ready():
 #   you can easily move individual functions.
 func _physics_process(_delta):
 	if is_movable:
+		if Input.get_action_strength("run"):
+			is_run = true
+		else:
+			is_run = false
+		
 		var direction = get_direction()
 	
 		var is_jump_interrupted = Input.is_action_just_released("jump" + action_suffix) and _velocity.y < 0.0
@@ -87,6 +92,8 @@ func calculate_move_velocity(
 		# Decrease the Y velocity by multiplying it, but don't set it to 0
 		# as to not be too abrupt.
 		velocity.y *= 0.6
+	if is_run:
+		velocity.x *= run_md
 	return velocity
 
 

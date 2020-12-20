@@ -9,6 +9,7 @@ const FLOOR_DETECT_DISTANCE = 20.0
 onready var Label = $Label
 onready var sentence = []
 
+
 func _physics_process(_delta):
 	var direction = get_direction()
 	var snap_vector = Vector2.DOWN * FLOOR_DETECT_DISTANCE if direction.y == 0.0 else Vector2.ZERO
@@ -21,6 +22,7 @@ func _physics_process(_delta):
 	_velocity = move_and_slide_with_snap(
 		_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
 		)
+
 
 func calculate_move_velocity(
 		linear_velocity,
@@ -38,6 +40,7 @@ func calculate_move_velocity(
 		velocity.y *= 0.6
 	return velocity
 
+
 func get_direction():
 	return Vector2(
 			0,
@@ -45,6 +48,7 @@ func get_direction():
 			if platform_detector.is_colliding()
 			else 0
 	)
+
 
 func _ready():
 	pass

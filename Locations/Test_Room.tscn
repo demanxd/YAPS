@@ -16,6 +16,8 @@ position = Vector2( -112.769, 124.826 )
 
 [node name="MainCharacter" parent="." instance=ExtResource( 2 )]
 position = Vector2( 660.284, -42.1434 )
+speed = Vector2( 200, 300 )
+run_md = 2.0
 mass = 5
 
 [node name="Citizen1" parent="." instance=ExtResource( 1 )]
@@ -42,10 +44,6 @@ rotation_speed = 0.05
 
 [node name="Waypoints" parent="." instance=ExtResource( 8 )]
 position = Vector2( 837.57, 2.70905 )
-editor_process = true
-line_color = Color( 0.228943, 0.710254, 0.945312, 1 )
-line_width = 10.0
-triangle_color = Color( 0.722656, 0.908997, 1, 1 )
 
 [node name="0" type="Position2D" parent="Waypoints"]
 position = Vector2( -3.77551, 60.4081 )
@@ -56,4 +54,18 @@ position = Vector2( 201.046, 55.6888 )
 [node name="Platform_Moveble" parent="." instance=ExtResource( 7 )]
 position = Vector2( 833.794, 63.1171 )
 waypoints_path = NodePath("../Waypoints")
+wait_time = 2.0
+
+[node name="Waypoints2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 837.57, 2.70905 )
+
+[node name="0" type="Position2D" parent="Waypoints2"]
+position = Vector2( 254.847, 20.7653 )
+
+[node name="1" type="Position2D" parent="Waypoints2"]
+position = Vector2( 569.158, -63.2397 )
+
+[node name="Platform_Moveble2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1406.73, -60.5307 )
+waypoints_path = NodePath("../Waypoints2")
 wait_time = 2.0
